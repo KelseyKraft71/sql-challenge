@@ -11,7 +11,6 @@ SELECT first_name, last_name, hire_date
 FROM employees
 WHERE hire_date LIKE '%/%/1986';
 
-select * from departments;
 
 -- Data Analysis 3
 -- Managers
@@ -38,8 +37,6 @@ FROM employees
 WHERE first_name = 'Hercules'
 AND last_name LIKE 'B%';
 
-select * from deptemployees;
-
 -- Data Analysis 6
 -- Sales employees
 SELECT emp_id, last_name, first_name
@@ -53,3 +50,21 @@ WHERE emp_id IN (
 		WHERE dept_name = 'Sales'
 	)
 );
+
+-- Data Analysis 7
+-- Sales and Development Employees
+SELECT e.emp_id, e.last_name, e.first_name, d.dept_name
+FROM employees AS e
+JOIN deptemployees AS de
+ON e.emp_id = de.emp_id
+JOIN departments AS d
+ON d.dept_num = de.dept_num
+WHERE d.dept_name
+IN ('Sales', 'Development');
+
+-- Data Analysis 8
+-- Frequency Counts of Employee Last Names
+SELECT last_name, COUNT(last_name) as last_name_count
+FROM employees
+GROUP BY last_name
+ORDER BY last_name_count DESC;

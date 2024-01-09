@@ -1,9 +1,9 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+-- I had to alter some of the code for functionality/readability
 
 CREATE TABLE Titles (
     title_id VARCHAR(5) NOT NULL,
-    title VARCHAR(20) NOT NULL,
+    title VARCHAR(30) NOT NULL,
     CONSTRAINT pk_Titles PRIMARY KEY (
         title_id
      )
@@ -11,14 +11,14 @@ CREATE TABLE Titles (
 
 CREATE TABLE Departments (
     dept_num VARCHAR(4) NOT NULL,
-    dept_name VARCHAR(20) NOT NULL,
+    dept_name VARCHAR(30) NOT NULL,
     CONSTRAINT pk_Departments PRIMARY KEY (
         dept_num
      )
 );
 
 CREATE TABLE Employees (
-    emp_id INT NOT NULL,
+    emp_id VARCHAR(6) NOT NULL,
     emp_title_id VARCHAR(5) NOT NULL,
     birth_date VARCHAR(10) NOT NULL,
     first_name VARCHAR(30) NOT NULL,
@@ -32,22 +32,22 @@ CREATE TABLE Employees (
 
 CREATE TABLE DeptManager (
     dept_num VARCHAR(4) NOT NULL,
-    emp_id INT NOT NULL,
+    emp_id VARCHAR(6) NOT NULL,
     CONSTRAINT pk_DeptManager PRIMARY KEY (
         dept_num,emp_id
      )
 );
 
 CREATE TABLE DeptEmployees (
-    emp_id INT NOT NULL,
+    emp_id VARCHAR(6) NOT NULL,
     dept_num VARCHAR(4) NOT NULL,
     CONSTRAINT pk_DeptEmployees PRIMARY KEY (
-        emp_id, dept_num
+        emp_id,dept_num
      )
 );
 
 CREATE TABLE Salaries (
-    emp_id INT NOT NULL,
+    emp_id VARCHAR(6) NOT NULL,
     salary INT NOT NULL,
     CONSTRAINT pk_Salaries PRIMARY KEY (
         emp_id
